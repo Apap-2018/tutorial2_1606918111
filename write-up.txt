@@ -1,3 +1,6 @@
+Desak Made
+1606918111
+
 1. Ganti baris @RequestMapping(“/viral”) menjadi @RequestMapping(“/viral2jari”).
 Kemudian run kembali.
 a. Apakah terjadi compile error? tidak
