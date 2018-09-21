@@ -1,0 +1,68 @@
+1. Ganti baris @RequestMapping(“/viral”) menjadi @RequestMapping(“/viral2jari”).
+Kemudian run kembali.
+a. Apakah terjadi compile error? tidak
+b. Coba akses localhost:8080/viral, berikan alasan dan jelaskan apa yang terjadi.
+Terjadi error 404 karena tidak method tau kelas yang dipetakan dengan url /viral
+
+c. Apakah Kegunaan @RequestMapping(“/viral”)
+Untuk melakukan pemetaan request ke method yang dituju
+
+Kembalikan menjadi @RequestMapping(“/viral”)
+2. Ganti nama method index() menjadi nama method viral()
+a. Apakah terjadi compile error? tidak
+b. Coba akses localhost:8080/viral, berikan alasan dan jelaskan apa yang terjadi.
+request akan mengembalikan text seperti di awal karena nama method tidak mempengaruhi request mapping
+
+Kembalikan menjadi index()
+3. Ganti string return type menjadi menjadi return “viral2jari”
+a. Apakah terjadi compile error? tidak
+
+b. Coba akses localhost:8080/viral, berikan alasan dan jelaskan apa yang terjadi.
+error 500 karena return method berubah menjadi viral2jari sementara di template tidak ada file viral2jari.html
+
+c. Apakah kegunaan return type pada method controller tersebut?
+Kembalikan return type menjadi “viral”
+Method index me return string yang di interpretasikan oleh Spring MVC sebagai view name(dalam hal ini viral2jari.html)
+
+Latihan​ ​Request​ ​Parameter
+Setiap ada perubahan pada kode, selalu usahakan run ulang
+1. Mengapa tulisan “In My feeling” pada thymeleaf challenge tidak pernah muncul di
+browser?
+karena th:text attribute akan memodifikasi text yang ada pada tag html
+
+2. Ubah nilai anotasi Request Mapping “/challenge” menjadi “/viral/challenge”.
+Deskripsikan hasil pada browser dan kembalikan ke bentuk sebelumnya!
+Error 404 karena tidak ada pemetaan url ke "/challenge"
+
+
+3. Akses localhost:8080/challenge.
+a. Deskripsikan hasilnya
+Error 400 karena request membutuhkan parameter name
+
+b. Ubah methodnya menjadi seperti di bawah ini, deskripsikan lalu kembalikan
+ke bentuk awal!
+muncul "null do you love me?"
+karena requirement parameter diubah menjadi false maka default nya menjadi null
+
+c. Ubah methodnya menjadi seperti di bawah ini, deskripsikan lalu kembalikan
+ke bentuk awal!
+
+muncul "kiki do you love me?"
+karena defaultvalue diubah menjadi "kiki"
+
+
+Latihan​ ​Path Variable
+Setiap ada perubahan pada kode, selalu usahakan run ulang
+1. Akses localhost:8080/challenge/
+Apakah hasil dari halaman tersebut?
+Error 400 karena mapping ke /challenge di handle oleh method challenge() dan method tersebut membutuhkan parameter name
+
+2. Ubah method challengePath menjadi seperti berikut
+Akses localhost:8080/challenge/
+Apakah hasil dari halaman tersebut?
+Error 500 karena pemetaan request ke "/challenge" di handle oleh dua method yang berbeda yaitu challenge() dan challengePath()
+
+3. Akses localhost:8080/challenge/kiki
+Apakah hasil dari halaman tersebut?
+muncul "kiki do you love me? are you riding?" karena ada method yang meng handle mapping url yang menerima path parameter "/challenge/kiki" yaitu method challengePath()
+
